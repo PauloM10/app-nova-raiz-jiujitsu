@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">nova-raiz-app</string>
+    <string name="title_activity_main">nova-raiz-app</string>
+    <string name="package_name">com.novaraiz.app</string>
+    <string name="custom_url_scheme">com.novaraiz.app</string>
+</resources>

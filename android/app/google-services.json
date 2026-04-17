@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1096031199652",
+    "project_id": "nova-raiz-jiujitsu",
+    "storage_bucket": "nova-raiz-jiujitsu.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1096031199652:android:dce74e073db4a713212131",
+        "android_client_info": {
+          "package_name": "com.novaraiz.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQqFjhbkPuYixP79BCDOu7zjgH0bPIL4k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
