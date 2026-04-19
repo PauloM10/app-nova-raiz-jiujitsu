@@ -24,6 +24,7 @@ import AdminTreinosScreen from "./pages/admin/AdminTreinosScreen";
 import AdminChamadaScreen from "./pages/admin/AdminChamadaScreen";
 import AdminFotosScreen from "./pages/admin/AdminFotosScreen";
 import AdminLojaScreen from "./pages/admin/AdminLojaScreen";
+import AdminLojaSenhaScreen from "./pages/admin/AdminLojaSenhaScreen";
 import AdminAvisosScreen from "./pages/admin/AdminAvisosScreen";
 import AdminVideosScreen from "./pages/admin/AdminVideosScreen";
 import AdminSobreScreen from "./pages/admin/AdminSobreScreen";
@@ -44,6 +45,8 @@ export default function App() {
   const [mensagemBloqueio, setMensagemBloqueio] = useState(
     "Aplicativo temporariamente indisponível. Tente novamente mais tarde."
   );
+
+  const [lojaLiberada, setLojaLiberada] = useState(false);
 
   useEffect(() => {
     async function carregarConfig() {
@@ -77,6 +80,7 @@ export default function App() {
           setLogged(false);
           setPerfil("aluno");
           setScreen("login");
+          setLojaLiberada(false);
         }
       } catch (error) {
         console.error("Erro ao recuperar sessão:", error);
@@ -84,6 +88,7 @@ export default function App() {
         setLogged(false);
         setPerfil("aluno");
         setScreen("login");
+        setLojaLiberada(false);
       } finally {
         setCarregandoAuth(false);
       }
@@ -120,6 +125,7 @@ export default function App() {
               setPerfil(user.perfil);
               setLogged(true);
               setScreen(user.perfil === "professor" ? "admin_home" : "home");
+              setLojaLiberada(false);
             }}
             perfil={perfil}
             setPerfil={setPerfil}
@@ -145,8 +151,30 @@ export default function App() {
           <AdminTreinosScreen goTo={setScreen} usuario={usuario} />
         ) : screen === "admin_chamada" ? (
           <AdminChamadaScreen goTo={setScreen} usuario={usuario} />
+        ) : screen === "admin_loja_senha" ? (
+          lojaLiberada ? (
+            <AdminLojaScreen goTo={setScreen} usuario={usuario} />
+          ) : (
+            <AdminLojaSenhaScreen
+              goTo={setScreen}
+              liberarLoja={() => {
+                setLojaLiberada(true);
+                setScreen("admin_loja");
+              }}
+            />
+          )
         ) : screen === "admin_loja" ? (
-          <AdminLojaScreen goTo={setScreen} usuario={usuario} />
+          lojaLiberada ? (
+            <AdminLojaScreen goTo={setScreen} usuario={usuario} />
+          ) : (
+            <AdminLojaSenhaScreen
+              goTo={setScreen}
+              liberarLoja={() => {
+                setLojaLiberada(true);
+                setScreen("admin_loja");
+              }}
+            />
+          )
         ) : screen === "admin_fotos" ? (
           <AdminFotosScreen goTo={setScreen} usuario={usuario} />
         ) : screen === "admin_avisos" ? (

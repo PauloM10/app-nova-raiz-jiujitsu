@@ -52,7 +52,7 @@ export default function AdminDashboardScreen({ goTo, usuario, abrirAreaAluno }) 
         </div>
 
         <div className="grid grid-cols-2 gap-3">
-          <Button variant="outline" onClick={() => goTo("admin_loja")}>
+          <Button variant="outline" onClick={() => goTo("admin_loja_senha")}>
             Loja
           </Button>
           <Button variant="outline" onClick={() => goTo("admin_fotos")}>
